@@ -15,29 +15,30 @@
 
   <!-- HEADER -->
   <header>
-  <h1>Happy Valentine’s Day, My Navi Boo ❤️</h1>
-  <p>
-    Even though we’re miles apart right now, my heart has never felt closer to yours.
-  </p>
-  <button class="music-btn" onclick="toggleMusic()">🎵 Play Our Song</button>
-</header>
+    <h1>Happy Valentine’s Day, My Navi Boo ❤️</h1>
+    <p>
+      Even though we’re miles apart right now, my heart has never felt closer to yours.
+    </p>
+    <button class="music-btn" onclick="toggleMusic()">🎵 Play Our Song</button>
+  </header>
 
   <!-- NAVIGATION -->
   <nav>
-    <a href="#story">Our Story</a>
-    <a href="#love">What I Love About You</a>
-    <a href="#distance">Long Distance Us</a>
-    <a href="#openwhen">Open When…</a>
-    <a href="#memories">Our Memories</a>
-    <a href="#future">Our Future</a>
-    <a href="#promise">My Promise</a>
-    <a href="#valentine">My Valentine 💖</a>
+    <a href="#" onclick="openModal('storyModal')">Our Story</a>
+    <a href="#" onclick="openModal('loveModal')">What I Love</a>
+    <a href="#" onclick="openModal('distanceModal')">Long Distance Us</a>
+    <a href="#" onclick="openModal('openWhenModal')">Open When…</a>
+    <a href="#" onclick="openModal('memoriesModal')">Our Memories</a>
+    <a href="#" onclick="openModal('futureModal')">Our Future</a>
+    <a href="#" onclick="openModal('promiseModal')">My Promise</a>
+    <a href="#" onclick="openModal('valentineModal')">My Valentine 💖</a>
   </nav>
 
-  <!-- OUR STORY -->
-  <section id="story">
-    <h2>How Our Story Became My Favorite Part of My Life ✨</h2>
-    <div class="card">
+  <!-- STORY MODAL -->
+  <div class="modal" id="storyModal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('storyModal')">&times;</span>
+      <h2>How Our Story Became My Favorite Part of My Life ✨</h2>
       <p>
         I didn’t know that meeting you would quietly, gently, and completely change my world. What started as a simple conversation turned into the safest place my heart has ever known.
       </p>
@@ -48,12 +49,13 @@
         And now, even across miles, even in moments when I miss you so deeply it hurts, I still feel you with me — in my thoughts, in my heart, in everything I do.
       </p>
     </div>
-  </section>
+  </div>
 
-  <!-- WHAT I LOVE -->
-  <section id="love">
-    <h2>Everything I Love About You (Which Is Basically Everything) 🤍</h2>
-    <div class="card">
+  <!-- LOVE MODAL -->
+  <div class="modal" id="loveModal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('loveModal')">&times;</span>
+      <h2>Everything I Love About You 🤍</h2>
       <ul>
         <li>The way you show up for me, especially when I’m at my weakest</li>
         <li>Your patience — the kind that makes me feel safe to be fully myself</li>
@@ -68,12 +70,13 @@
         I don’t just love you — I feel lucky to love you.
       </p>
     </div>
-  </section>
+  </div>
 
-  <!-- LONG DISTANCE -->
-  <section id="distance">
-    <h2>Even Across Miles, You’re Still My Home 🌙</h2>
-    <div class="card">
+  <!-- DISTANCE MODAL -->
+  <div class="modal" id="distanceModal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('distanceModal')">&times;</span>
+      <h2>Even Across Miles, You’re Still My Home 🌙</h2>
       <p>
         Being apart from you right now is one of the hardest things I’ve had to do. I miss your hugs. I miss your presence. I miss the comfort of simply being next to you.
       </p>
@@ -87,12 +90,13 @@
         No matter where you are, you are still my person. You are still my heart. You are still my forever.
       </p>
     </div>
-  </section>
+  </div>
 
-  <!-- OPEN WHEN -->
-  <section id="openwhen">
-    <h2>Open When… 💌</h2>
-    <div class="card open-when">
+  <!-- OPEN WHEN MODAL -->
+  <div class="modal" id="openWhenModal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('openWhenModal')">&times;</span>
+      <h2>Open When… 💌</h2>
       <h3>Open when you miss me:</h3>
       <p>
         I miss you too — more than I can ever explain. But remember this: this distance is temporary, and us is permanent. Close your eyes and imagine my arms around you, my head on your chest, my heart beating with yours — because that’s exactly where I belong.
@@ -113,17 +117,15 @@
         Somewhere in the world right now, there is a girl smiling because she gets to love you — and that girl is me 😌❤️
       </p>
     </div>
-  </section>
+  </div>
 
-  <!-- MEMORIES -->
-  <section id="memories">
-    <h2>Moments I’ll Carry in My Heart Forever 📷</h2>
-    <div class="card">
+  <!-- MEMORIES MODAL -->
+  <div class="modal" id="memoriesModal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('memoriesModal')">&times;</span>
+      <h2>Moments I’ll Carry in My Heart Forever 📷</h2>
       <p>
         Every moment with you — the big ones, the quiet ones, the silly ones — lives in my heart. These memories are my comfort on the days I miss you most.
-      </p>
-      <p>
-        Each photo, each laugh, each shared moment reminds me that what we have is real, rare, and beautiful.
       </p>
 
       <div class="gallery">
@@ -135,17 +137,15 @@
         <img src="photo6.jpg" alt="Memory 6" />
       </div>
     </div>
-  </section>
+  </div>
 
-  <!-- FUTURE -->
-  <section id="future">
-    <h2>Everything I Dream of Building With You 🌈</h2>
-    <div class="card">
+  <!-- FUTURE MODAL -->
+  <div class="modal" id="futureModal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('futureModal')">&times;</span>
+      <h2>Everything I Dream of Building With You 🌈</h2>
       <p>
         I don’t just imagine a future — I imagine a future with you.
-      </p>
-      <p>
-        I see us waking up next to each other, building our home, creating our routines, and growing side by side through every season of life.
       </p>
       <ul>
         <li>Our home — filled with love, laughter, and warmth</li>
@@ -160,24 +160,26 @@
         I don’t want a future — I want <em>our</em> future.
       </p>
     </div>
-  </section>
+  </div>
 
-  <!-- PROMISE -->
-  <section id="promise">
-    <h2>What I Promise You — Always 🤞❤️</h2>
-    <div class="card">
+  <!-- PROMISE MODAL -->
+  <div class="modal" id="promiseModal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('promiseModal')">&times;</span>
+      <h2>What I Promise You — Always 🤞❤️</h2>
       <p>I promise to love you on your strongest days and your weakest ones.</p>
       <p>I promise to stand beside you, not just when life is easy, but when it feels heavy too.</p>
       <p>I promise to support your dreams, protect your heart, and respect the man you are.</p>
       <p>I promise to choose you — in every season, in every version of life.</p>
       <p>I promise that no matter where life takes us, my heart will always find its way back to yours.</p>
     </div>
-  </section>
+  </div>
 
-  <!-- VALENTINE -->
-  <section id="valentine">
-    <h2>Will You Be My Valentine? 🌹</h2>
-    <div class="card">
+  <!-- VALENTINE MODAL -->
+  <div class="modal" id="valentineModal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('valentineModal')">&times;</span>
+      <h2>Will You Be My Valentine? 🌹</h2>
       <p>
         This is our first Valentine’s Day — and even though we’re not in the same place, my heart is completely, undeniably, and forever yours.
       </p>
@@ -187,23 +189,36 @@
       <p>
         No matter the distance, no matter the time, no matter the circumstances — it will always be you.
       </p>
-<p>
-  To my Navi Boo — from your forever AA 🔋 Battery 🔋❤️
-</p>
 
-      <button class="secret-btn" onclick="toggleSecret()">💌 Click for a Secret Message</button>
+      <p>
+        To my Navi Boo — from your forever AA 🔋 Battery 🔋❤️
+      </p>
 
-      <div class="hidden-message" id="secretMessage">
-        You are my answered prayer, my safe place, my heart, and my home. I don’t just love you — I choose you, in every lifetime, in every version of us. And I will always, always be yours. ❤️
-      </div>
+      <button class="secret-btn" onclick="openSecret()">💌 Click for a Secret Message</button>
 
       <p class="signature">
-  Forever yours,<br />
-  AA 🔋 Battery
-</p>
-
+        Forever yours,<br />
+        AA 🔋 Battery
+      </p>
     </div>
-  </section>
+  </div>
+
+  <!-- SECRET MESSAGE POPUP -->
+  <div class="modal" id="secretModal">
+    <div class="modal-content secret-style">
+      <span class="close" onclick="closeModal('secretModal')">&times;</span>
+      <h2>For My Navi Boo 💖</h2>
+      <p>
+        You are my Navi Boo, my answered prayer, my safe place, my heart, and my home.
+      </p>
+      <p>
+        I don’t just love you — I choose you, in every lifetime, in every version of us.
+      </p>
+      <p>
+        And I will always, always be your AA 🔋 Battery. ❤️
+      </p>
+    </div>
+  </div>
 
   <!-- FOOTER -->
   <footer>
@@ -214,4 +229,3 @@
   <script src="script.js"></script>
 </body>
 </html>
-
