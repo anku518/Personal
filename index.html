@@ -1,231 +1,684 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <title>For Naveen — My Valentine ❤️</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="styles.css" />
+  <title>My Valentine 💖</title>
+
+  <!-- Aesthetic Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500&family=Great+Vibes&display=swap"
+    rel="stylesheet">
+
+  <style>
+    :root {
+      --red: #c62828;
+      --teal: #008080;
+      --soft-pink: #fce4ec;
+      --cream: #fff6f0;
+      --dark: #3a3a3a;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: linear-gradient(135deg, var(--soft-pink), var(--cream));
+      color: var(--dark);
+      min-height: 100vh;
+      font-family: "Poppins", sans-serif;
+      overflow-x: hidden;
+      font-family: 'Montserrat', sans-serif;
+      color: var(--dark);
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 30px 20px 60px;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    h1 {
+      font-family: "Great Vibes", cursive;
+      font-size: 3rem;
+      color: var(--red);
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      font-family: "Playfair Display", serif;
+      color: var(--teal);
+      margin-bottom: 15px;
+      font-size: 2rem;
+    }
+
+    p {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      max-width: 700px;
+      margin: 10px auto;
+    }
+
+    .heart {
+      font-size: 2rem;
+      animation: pulse 1.5s infinite;
+      display: inline-block;
+      margin-left: 6px;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.2);
+      }
+
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    /* Floating Hearts & Roses */
+    .floating {
+      position: fixed;
+      bottom: -40px;
+      font-size: 24px;
+      animation: floatUp 9s linear infinite;
+      opacity: 0.85;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 0;
+      }
+
+      10% {
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateY(-120vh) scale(1.4);
+        opacity: 0;
+      }
+    }
+
+    /* Audio Player */
+    .audio-player {
+      margin: 25px auto 25px;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .audio-btn {
+      background: linear-gradient(135deg, var(--red), var(--teal));
+      border: none;
+      color: white;
+      padding: 12px 22px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+    }
+
+    .audio-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
+    }
+
+    .home-center {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .home-content {
+      text-align: center;
+    }
+
+    /* Navigation Buttons - CENTERED */
+    .nav-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 18px;
+      margin-top: 35px;
+    }
+
+    .nav-btn {
+      background: white;
+      border: 2px solid rgba(0, 128, 128, 0.3);
+      border-radius: 25px;
+      padding: 14px 20px;
+      font-size: 1rem;
+      cursor: pointer;
+      color: var(--dark);
+      transition: all 0.25s ease;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+      min-width: 170px;
+    }
+
+    .nav-btn:hover {
+      background: linear-gradient(135deg, var(--red), var(--teal));
+      color: white;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.18);
+    }
+
+    /* Page Sections */
+    .page {
+      display: none;
+      animation: fadeIn 0.5s ease forwards;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .back-btn {
+      margin-top: 30px;
+      background: transparent;
+      border: 2px solid var(--teal);
+      color: var(--teal);
+      padding: 12px 24px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: all 0.2s;
+    }
+
+    .back-btn:hover {
+      background: linear-gradient(135deg, var(--teal), var(--red));
+      color: white;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 28px;
+      padding: 35px 28px;
+      margin: 25px auto;
+      max-width: 750px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+    }
+
+    .highlight {
+      color: var(--red);
+      font-weight: 600;
+    }
+
+    .emoji {
+      font-size: 1.4rem;
+    }
+
+
+    footer {
+      margin-top: 50px;
+      font-size: 0.9rem;
+      opacity: 0.7;
+      font-family: "Playfair Display", serif;
+    }
+
+    /* MEMORY GALLERY */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 18px;
+      margin-top: 20px;
+    }
+
+    .memory {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+      transition: transform 0.3s;
+      cursor: pointer;
+    }
+
+    .memory:hover {
+      transform: translateY(-5px);
+    }
+
+    .memory img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .memory-text {
+      padding: 14px;
+      text-align: center;
+    }
+
+    .memory-date {
+      font-weight: 600;
+      color: var(--teal);
+      font-family: "Playfair Display", serif;
+    }
+
+    .memory-caption {
+      font-size: 0.95rem;
+      margin-top: 6px;
+    }
+
+    /* Modal for full image */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      padding: 20px;
+    }
+
+    .modal img {
+      max-width: 90%;
+      max-height: 70vh;
+      border-radius: 20px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .modal-text {
+      margin-top: 15px;
+      text-align: center;
+      color: white;
+      font-family: "Playfair Display", serif;
+    }
+
+    .modal-date {
+      font-weight: 700;
+      color: #ffcccc;
+      font-size: 1.1rem;
+    }
+
+    .modal-caption {
+      margin-top: 6px;
+      font-size: 1rem;
+    }
+
+    .close-modal {
+      margin-top: 20px;
+      background: white;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 0.95rem;
+      color: var(--dark);
+    }
+
+    /* Secret Message Modal */
+    .secret-modal {
+      display: none;
+      position: fixed;
+      z-index: 1001;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .secret-card {
+      background: white;
+      border-radius: 25px;
+      padding: 30px 28px;
+      max-width: 420px;
+      text-align: center;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
+      animation: fadeIn 0.4s ease forwards;
+    }
+
+    .secret-card h3 {
+      font-family: "Great Vibes", cursive;
+      font-size: 2.2rem;
+      color: var(--red);
+      margin-bottom: 10px;
+    }
+
+    .secret-card p {
+      font-size: 1.05rem;
+      margin-bottom: 18px;
+    }
+
+    .secret-close-btn {
+      background: linear-gradient(135deg, var(--red), var(--teal));
+      border: none;
+      color: white;
+      padding: 10px 22px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 0.95rem;
+    }
+
+    footer {
+      position: fixed;
+      /* Stick to the viewport */
+      bottom: 0;
+      /* At the bottom */
+      left: 50%;
+      /* Center horizontally */
+      transform: translateX(-50%);
+      /* Truly center */
+      font-size: 0.9rem;
+      opacity: 0.85;
+      z-index: 1000;
+      /* Always on top */
+    }
+  </style>
 </head>
+
 <body>
 
-  <!-- BACKGROUND MUSIC -->
-  <audio id="bg-music" loop>
-    <source src="music.mp3" type="audio/mpeg">
-  </audio>
+  <!-- Floating hearts & roses container -->
+  <div id="floating-container"></div>
 
-  <!-- HEADER -->
-  <header>
-    <h1>Happy Valentine’s Day, My Navi Boo ❤️</h1>
-    <p>
-      Even though we’re miles apart right now, my heart has never felt closer to yours.
-    </p>
-    <button class="music-btn" onclick="toggleMusic()">🎵 Play Our Song</button>
-  </header>
+  <div class="container">
 
-  <!-- NAVIGATION -->
-  <nav>
-    <a href="#" onclick="openModal('storyModal')">Our Story</a>
-    <a href="#" onclick="openModal('loveModal')">What I Love</a>
-    <a href="#" onclick="openModal('distanceModal')">Long Distance Us</a>
-    <a href="#" onclick="openModal('openWhenModal')">Open When…</a>
-    <a href="#" onclick="openModal('memoriesModal')">Our Memories</a>
-    <a href="#" onclick="openModal('futureModal')">Our Future</a>
-    <a href="#" onclick="openModal('promiseModal')">My Promise</a>
-    <a href="#" onclick="openModal('valentineModal')">My Valentine 💖</a>
-  </nav>
+    <!-- HOME PAGE -->
+    <div id="home" class="page active home-center">
+      <div class="home-content">
+        <h1>Happy Valentine’s Day, My Navi Boo <span class="heart">❤️</span></h1>
+        <p>
+          Even though we’re miles apart right now, my heart has never felt closer to yours.
+        </p>
 
-  <!-- STORY MODAL -->
-  <div class="modal" id="storyModal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal('storyModal')">&times;</span>
-      <h2>How Our Story Became My Favorite Part of My Life ✨</h2>
-      <p>
-        I didn’t know that meeting you would quietly, gently, and completely change my world. What started as a simple conversation turned into the safest place my heart has ever known.
-      </p>
-      <p>
-        With you, love doesn’t feel loud or chaotic — it feels calm, steady, and real. It feels like being understood without having to explain. It feels like being chosen, again and again.
-      </p>
-      <p>
-        And now, even across miles, even in moments when I miss you so deeply it hurts, I still feel you with me — in my thoughts, in my heart, in everything I do.
-      </p>
-    </div>
-  </div>
+        <!-- Audio Player -->
+        <div class="audio-player">
+          <audio id="loveSong" loop>
+            <source src="song.mp3" type="audio/mpeg" />
+            Your browser does not support the audio element.
+          </audio>
+          <button class="audio-btn" onclick="toggleMusic()">▶️ Play / ⏸️ Pause Our Song</button>
+          <button class="audio-btn" onclick="openSecret()">💌 Secret Message</button>
+        </div>
 
-  <!-- LOVE MODAL -->
-  <div class="modal" id="loveModal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal('loveModal')">&times;</span>
-      <h2>Everything I Love About You 🤍</h2>
-      <ul>
-        <li>The way you show up for me, especially when I’m at my weakest</li>
-        <li>Your patience — the kind that makes me feel safe to be fully myself</li>
-        <li>Your kindness — not just in words, but in the way you live</li>
-        <li>The way you make me feel seen, heard, and deeply loved</li>
-        <li>Your strength — especially the way you’re caring for your family right now</li>
-        <li>Your smile — the one that can change my entire day in seconds</li>
-        <li>Your laugh — my favorite sound in the world</li>
-        <li>The way loving you feels like finally coming home</li>
-      </ul>
-      <p>
-        I don’t just love you — I feel lucky to love you.
-      </p>
-    </div>
-  </div>
-
-  <!-- DISTANCE MODAL -->
-  <div class="modal" id="distanceModal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal('distanceModal')">&times;</span>
-      <h2>Even Across Miles, You’re Still My Home 🌙</h2>
-      <p>
-        Being apart from you right now is one of the hardest things I’ve had to do. I miss your hugs. I miss your presence. I miss the comfort of simply being next to you.
-      </p>
-      <p>
-        But I also admire you more than I can put into words — for your strength, your responsibility, and the way you’re showing up for your family with so much love. Watching you care for the people you love makes me fall for you all over again.
-      </p>
-      <p>
-        This distance isn’t a wall — it’s just a chapter. And every chapter we walk through together only makes our story stronger.
-      </p>
-      <p>
-        No matter where you are, you are still my person. You are still my heart. You are still my forever.
-      </p>
-    </div>
-  </div>
-
-  <!-- OPEN WHEN MODAL -->
-  <div class="modal" id="openWhenModal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal('openWhenModal')">&times;</span>
-      <h2>Open When… 💌</h2>
-      <h3>Open when you miss me:</h3>
-      <p>
-        I miss you too — more than I can ever explain. But remember this: this distance is temporary, and us is permanent. Close your eyes and imagine my arms around you, my head on your chest, my heart beating with yours — because that’s exactly where I belong.
-      </p>
-
-      <h3>Open when you’re tired or overwhelmed:</h3>
-      <p>
-        You don’t have to be strong all the time. You don’t have to carry everything alone. Let me hold you — even if it’s just through words right now. I’m so proud of you, and I love you more for the way you keep going.
-      </p>
-
-      <h3>Open when you need motivation:</h3>
-      <p>
-        Look at everything you’re doing — the way you show up, the way you care, the way you love. You inspire me every single day. You are stronger than you realize, and I believe in you more than you know.
-      </p>
-
-      <h3>Open when you need a smile:</h3>
-      <p>
-        Somewhere in the world right now, there is a girl smiling because she gets to love you — and that girl is me 😌❤️
-      </p>
-    </div>
-  </div>
-
-  <!-- MEMORIES MODAL -->
-  <div class="modal" id="memoriesModal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal('memoriesModal')">&times;</span>
-      <h2>Moments I’ll Carry in My Heart Forever 📷</h2>
-      <p>
-        Every moment with you — the big ones, the quiet ones, the silly ones — lives in my heart. These memories are my comfort on the days I miss you most.
-      </p>
-
-      <div class="gallery">
-        <img src="photo1.jpg" alt="Memory 1" />
-        <img src="photo2.jpg" alt="Memory 2" />
-        <img src="photo3.jpg" alt="Memory 3" />
-        <img src="photo4.jpg" alt="Memory 4" />
-        <img src="photo5.jpg" alt="Memory 5" />
-        <img src="photo6.jpg" alt="Memory 6" />
+        <!-- Navigation -->
+        <div class="nav-grid">
+          <button class="nav-btn" onclick="openPage('story')">Our Story</button>
+          <button class="nav-btn" onclick="openPage('love')">What I Love</button>
+          <button class="nav-btn" onclick="openPage('distance')">Long Distance Us</button>
+          <button class="nav-btn" onclick="openPage('openwhen')">Open When…</button>
+          <button class="nav-btn" onclick="openPage('memories')">Our Memories</button>
+          <button class="nav-btn" onclick="openPage('future')">Our Future</button>
+          <button class="nav-btn" onclick="openPage('promise')">My Promise</button>
+          <button class="nav-btn" onclick="openPage('valentine')">My Valentine 💖</button>
+        </div>
       </div>
     </div>
+
+
+    <!-- OUR STORY -->
+    <div id="story" class="page">
+      <div class="card">
+        <h2>Our Story 📖</h2>
+        <p>
+          June 3 gave me a friend. August 3 gave me my boyfriend. And every day after that gave me more reasons to fall
+          in love with you.
+        </p>
+        <p>
+          You didn’t just come into my life — <span class="highlight">you changed it</span>. You became my safe place,
+          my peace, and my home, no matter how far apart we are.
+        </p>
+      </div>
+      <button class="back-btn" onclick="goHome()">⬅ Back</button>
+    </div>
+
+    <!-- WHAT I LOVE -->
+    <div id="love" class="page">
+      <div class="card">
+        <h2>What I Love About You 💌</h2>
+        <p>✨ The way you make me feel safe without even trying.</p>
+        <p>✨ Your kindness, your patience, and your heart.</p>
+        <p>✨ How you make me laugh even on my hardest days.</p>
+        <p>✨ The way you love me — so gently, so deeply, so truly.</p>
+      </div>
+      <button class="back-btn" onclick="goHome()">⬅ Back</button>
+    </div>
+
+    <!-- LONG DISTANCE -->
+    <div id="distance" class="page">
+      <div class="card">
+        <h2>Long Distance Us 🌍</h2>
+        <p>
+          Being apart isn’t easy, but loving you makes it worth it. Every call, every message, every “I miss you” brings
+          us closer to the day we’re together again.
+        </p>
+        <p>
+          Distance doesn’t weaken us — <span class="highlight">it proves how strong our love is</span>.
+        </p>
+      </div>
+      <button class="back-btn" onclick="goHome()">⬅ Back</button>
+    </div>
+
+    <!-- OPEN WHEN -->
+    <div id="openwhen" class="page">
+      <div class="card">
+        <h2>Open When… 💌</h2>
+        <p>💌 Open when you miss me.</p>
+        <p>💌 Open when you can’t sleep.</p>
+        <p>💌 Open when you’re feeling low.</p>
+        <p>💌 Open when you need a reminder of how loved you are.</p>
+      </div>
+      <button class="back-btn" onclick="goHome()">⬅ Back</button>
+    </div>
+
+    <!-- MEMORIES -->
+    <div id="memories" class="page">
+      <div class="card">
+        <h2>Our Memories 📸</h2>
+        <p>
+          Every picture, every call, every moment with you is a memory I carry in my heart.
+        </p>
+
+        <div class="gallery">
+          <!-- Replace image filenames, dates, and captions -->
+          <div class="memory" onclick="openModal('memory1.jpg', 'June 3, 2025', 'The day we became friends 💫')">
+            <img src="memory1.jpg" alt="Memory 1">
+            <div class="memory-text">
+              <div class="memory-date">June 3, 2025</div>
+              <div class="memory-caption">The day we became friends 💫</div>
+            </div>
+          </div>
+
+          <div class="memory" onclick="openModal('memory2.jpg', 'August 3, 2025', 'The day we became us ❤️')">
+            <img src="memory2.jpg" alt="Memory 2">
+            <div class="memory-text">
+              <div class="memory-date">August 3, 2025</div>
+              <div class="memory-caption">The day we became us ❤️</div>
+            </div>
+          </div>
+
+          <div class="memory" onclick="openModal('memory3.jpg', 'December 25, 2025', 'Our first holiday together 🎄')">
+            <img src="memory3.jpg" alt="Memory 3">
+            <div class="memory-text">
+              <div class="memory-date">December 25, 2025</div>
+              <div class="memory-caption">Our first holiday together 🎄</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="back-btn" onclick="goHome()">⬅ Back</button>
+    </div>
+
+    <!-- OUR FUTURE -->
+    <div id="future" class="page">
+      <div class="card">
+        <h2>Our Future 💍</h2>
+        <p>
+          I see a future filled with laughter, late-night talks, inside jokes, adventures, and a home full of love —
+          with you.
+        </p>
+        <p>
+          No matter where life takes us, I know one thing for sure: <span class="highlight">I want it to be with
+            you</span>.
+        </p>
+      </div>
+      <button class="back-btn" onclick="goHome()">⬅ Back</button>
+    </div>
+
+    <!-- MY PROMISE -->
+    <div id="promise" class="page">
+      <div class="card">
+        <h2>My Promise 🤍</h2>
+        <p>
+          I promise to love you on your best days and your hardest ones.
+        </p>
+        <p>
+          I promise to listen, to support you, to grow with you, and to choose you — every single day.
+        </p>
+        <p>
+          You’re not just my boyfriend — <span class="highlight">you’re my person</span>.
+        </p>
+      </div>
+      <button class="back-btn" onclick="goHome()">⬅ Back</button>
+    </div>
+
+    <!-- MY VALENTINE -->
+    <div id="valentine" class="page">
+      <div class="card">
+        <h2>My Valentine 💖</h2>
+        <p>
+          Navi Boo, thank you for being you — for loving me the way you do, for standing by me, and for making my life
+          brighter just by being in it.
+        </p>
+        <p>
+          I love you more than words could ever express — today, tomorrow, and always.
+        </p>
+        <p class="emoji">❤️🌹💫</p>
+      </div>
+      <button class="back-btn" onclick="goHome()">⬅ Back</button>
+    </div>
+
+    <footer>
+      Made with love 💖 for my forever Valentine.
+    </footer>
+
   </div>
 
-  <!-- FUTURE MODAL -->
-  <div class="modal" id="futureModal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal('futureModal')">&times;</span>
-      <h2>Everything I Dream of Building With You 🌈</h2>
+  <!-- IMAGE MODAL -->
+  <div id="imageModal" class="modal" onclick="closeModal()">
+    <img id="modalImg" src="" alt="Memory enlarged">
+    <div class="modal-text">
+      <div class="modal-date" id="modalDate"></div>
+      <div class="modal-caption" id="modalCaption"></div>
+    </div>
+    <button class="close-modal">Close</button>
+  </div>
+
+  <!-- SECRET MESSAGE MODAL -->
+  <div id="secretModal" class="secret-modal">
+    <div class="secret-card">
+      <h3>My Secret 💖</h3>
       <p>
-        I don’t just imagine a future — I imagine a future with you.
+        You are my safe place, my peace, and my home. Loving you feels effortless, comforting, and so deeply right.
+        No matter where life takes us, my heart will always choose you — again and again, in every lifetime. ❤️
       </p>
-      <ul>
-        <li>Our home — filled with love, laughter, and warmth</li>
-        <li>Our babies — and the life we’ll create together</li>
-        <li>Our travels — exploring the world hand in hand</li>
-        <li>Our inside jokes — the ones only we understand</li>
-        <li>Our quiet nights — wrapped in each other’s arms</li>
-        <li>Our loud laughs — the kind that make everything else disappear</li>
-        <li>Our forever — the greatest adventure of all</li>
-      </ul>
-      <p>
-        I don’t want a future — I want <em>our</em> future.
-      </p>
+      <button class="secret-close-btn" onclick="closeSecret()">Close</button>
     </div>
   </div>
 
-  <!-- PROMISE MODAL -->
-  <div class="modal" id="promiseModal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal('promiseModal')">&times;</span>
-      <h2>What I Promise You — Always 🤞❤️</h2>
-      <p>I promise to love you on your strongest days and your weakest ones.</p>
-      <p>I promise to stand beside you, not just when life is easy, but when it feels heavy too.</p>
-      <p>I promise to support your dreams, protect your heart, and respect the man you are.</p>
-      <p>I promise to choose you — in every season, in every version of life.</p>
-      <p>I promise that no matter where life takes us, my heart will always find its way back to yours.</p>
-    </div>
-  </div>
+  <script>
+    function openPage(pageId) {
+      document.querySelectorAll('.page').forEach(page => {
+        page.classList.remove('active');
+      });
+      document.getElementById(pageId).classList.add('active');
+      window.scrollTo(0, 0);
+    }
 
-  <!-- VALENTINE MODAL -->
-  <div class="modal" id="valentineModal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal('valentineModal')">&times;</span>
-      <h2>Will You Be My Valentine? 🌹</h2>
-      <p>
-        This is our first Valentine’s Day — and even though we’re not in the same place, my heart is completely, undeniably, and forever yours.
-      </p>
-      <p>
-        Loving you has been one of the greatest blessings of my life. Thank you for choosing me, for trusting me, and for loving me the way you do.
-      </p>
-      <p>
-        No matter the distance, no matter the time, no matter the circumstances — it will always be you.
-      </p>
+    function goHome() {
+      openPage('home');
+    }
 
-      <p>
-        To my Navi Boo — from your forever AA 🔋 Battery 🔋❤️
-      </p>
+    function toggleMusic() {
+      const audio = document.getElementById('loveSong');
+      if (audio.paused) {
+        audio.play();
+      } else {
+        audio.pause();
+      }
+    }
 
-      <button class="secret-btn" onclick="openSecret()">💌 Click for a Secret Message</button>
+    /* Floating Hearts & Roses Generator */
+    const floatingContainer = document.getElementById("floating-container");
+    const symbols = ["❤️", "🌹"];
 
-      <p class="signature">
-        Forever yours,<br />
-        AA 🔋 Battery
-      </p>
-    </div>
-  </div>
+    function createFloating() {
+      const el = document.createElement("div");
+      el.classList.add("floating");
+      el.innerHTML = symbols[Math.floor(Math.random() * symbols.length)];
+      el.style.left = Math.random() * 100 + "vw";
+      el.style.animationDuration = (7 + Math.random() * 6) + "s";
+      el.style.fontSize = (18 + Math.random() * 22) + "px";
+      el.style.opacity = Math.random() * 0.7 + 0.3;
+      floatingContainer.appendChild(el);
 
-  <!-- SECRET MESSAGE POPUP -->
-  <div class="modal" id="secretModal">
-    <div class="modal-content secret-style">
-      <span class="close" onclick="closeModal('secretModal')">&times;</span>
-      <h2>For My Navi Boo 💖</h2>
-      <p>
-        You are my Navi Boo, my answered prayer, my safe place, my heart, and my home.
-      </p>
-      <p>
-        I don’t just love you — I choose you, in every lifetime, in every version of us.
-      </p>
-      <p>
-        And I will always, always be your AA 🔋 Battery. ❤️
-      </p>
-    </div>
-  </div>
+      setTimeout(() => {
+        el.remove();
+      }, 13000);
+    }
 
-  <!-- FOOTER -->
-  <footer>
-    <p>Made with all my love, just for you 💖</p>
-    <p>No distance, no time, no circumstance can change what you mean to me.</p>
-  </footer>
+    setInterval(createFloating, 500);
 
-  <script src="script.js"></script>
+    /* Image Modal */
+    function openModal(imgSrc, date, caption) {
+      document.getElementById("modalImg").src = imgSrc;
+      document.getElementById("modalDate").innerText = date;
+      document.getElementById("modalCaption").innerText = caption;
+      document.getElementById("imageModal").style.display = "flex";
+    }
+
+    function closeModal() {
+      document.getElementById("imageModal").style.display = "none";
+    }
+
+    /* Secret Message */
+    function openSecret() {
+      document.getElementById("secretModal").style.display = "flex";
+    }
+
+    function closeSecret() {
+      document.getElementById("secretModal").style.display = "none";
+    }
+  </script>
+
 </body>
+
 </html>
